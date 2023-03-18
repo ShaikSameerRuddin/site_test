@@ -1,15 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { App } from './modules/app/pages/App';
+import { BrowserRouter } from 'react-router-dom';
+import { Suspense } from 'react';
 
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { CustomLoader } from './shared/components/customLoader/CustomLoader';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <Suspense fallback={<div><CustomLoader /></div>}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Suspense>
   </React.StrictMode>
 );
 
