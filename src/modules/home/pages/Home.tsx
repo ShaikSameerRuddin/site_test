@@ -40,7 +40,6 @@ export const Home: React.FC = withTheme((props: ThemeProps<any>) => {
   >([]);
   const [currentData, setCurrentData] = React.useState<{} | any>();
   const [forecastData, setForecastData] = React.useState<{}>();
-  console.log(currentData, 'current', forecastData, 'forecast');
 
   const debounceValue = useDebounce<string>(search, 500);
 
@@ -67,9 +66,9 @@ export const Home: React.FC = withTheme((props: ThemeProps<any>) => {
         ]);
       setCurrentData({
         city: city,
-        ...currentWeatherResponse?.data,
+        ...currentWeatherResponse,
       });
-      setForecastData(forecastWeatherResponse?.data);
+      setForecastData(forecastWeatherResponse);
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -89,8 +88,9 @@ export const Home: React.FC = withTheme((props: ThemeProps<any>) => {
         options
       );
       const data = await response.json();
+
       if (data) {
-        const optionsArray = data.map((elm: any) => ({
+        const optionsArray = data.data?.map((elm: any) => ({
           value: `${elm?.latitude} ${elm?.longitude}`,
           label: `${elm?.city}, ${elm?.countryCode}`,
         }));
@@ -118,7 +118,6 @@ export const Home: React.FC = withTheme((props: ThemeProps<any>) => {
           isSearchable={true}
           onChange={handleChange}
           placeholder="Search The Cities"
-          value={citiesOptions}
         />
       </SearchInputContainer>
       {loading ? (

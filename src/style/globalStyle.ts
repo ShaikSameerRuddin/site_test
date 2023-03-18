@@ -1,19 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
-import { fontSizes, gapSizes, screenSizes } from './theme';
+import { gapSizes } from './theme';
 
 import { rgba } from 'polished';
 
 export const GlobalStyle = createGlobalStyle`
-  /* :root{
-    transition: margin 300ms ease-in-out;
-    --pageMargin: 80px;
-    @media (max-width: ${screenSizes.L}px) {
-      --pageMargin: 40px;
-    }
-    @media (max-width: ${screenSizes.M}px) {
-      --pageMargin: 20px;
-    }
-  } */
+  
 
   h1,h2,h3,h4{
     margin: 0;
@@ -22,9 +13,7 @@ export const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    
- 
+    -moz-osx-font-smoothing: grayscale; 
   }
   html,
   body {
@@ -37,8 +26,6 @@ export const GlobalStyle = createGlobalStyle`
     min-height: 100%;
     margin: 0;
     padding: 0;
-   
-    font-family: 'DMSansRegular';
     width: 100%;
     margin: 0;
     padding: 0;
@@ -58,7 +45,7 @@ export const GlobalStyle = createGlobalStyle`
     background-clip: content-box;
   }
   ::-webkit-input-placeholder {
-color: rgba(0, 0, 0, .7);
+     color: rgba(0, 0, 0, .7);
 }
   #root{
     display: flex;
@@ -73,29 +60,12 @@ color: rgba(0, 0, 0, .7);
     font-family: "DMSansRegular";
   }
   a{
-    font-family: 'DMSansRegular';
     text-decoration: none;
-    
-    
-  }
-  label {
-    font-size: ${fontSizes.XS};
-    position: relative;
-    
-  }
- 
-  
-  
-  button {
-    font-size: 16px;
-    margin: 0;
-    padding: 8px 12px;
   }
   hr {
  
     border: 0;
   }
-
   a.disabled {
     pointer-events: none;
   }
